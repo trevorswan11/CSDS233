@@ -30,13 +30,29 @@ public class MathFunction {
      * @return the result
      */
     public static int multiplyRecursive(int x) {
-        return 0;
+        // Base case: 2 * 1^1 = 2, negative yields non-integer
+        if (x == 1 || x < 0) {
+            return 2;
+        }
+
+        // Recursive case: 2 * x^x
+        return 2 * recursivePower(x, x);
+    }
+
+    private static int recursivePower(int base, int exponent) {
+        // Base case: base^0 = 1 for all base
+        if (exponent == 0) {
+            return 1;
+        }
+
+        // Recursive case: base ^ exponent = base * base ^ (exponent - 1)
+        return base * recursivePower(base, exponent - 1);
     }
 
     /**
      * Returns the square root of a value that is between two bounds.
      * 
-     * @param x The value to take the square root of
+     * @param x The value to take the square root of 1
      * @param low The lower bound for the square root
      * @param high The upper bound for the square root
      * @return The value (between bounds) for teh square root
@@ -64,6 +80,16 @@ public class MathFunction {
      * @return The value (between bounds) for teh square root
      */
     public static int sqrtIterative(int x, int low, int high) {
-        return 0;
+        // Square root can only be at most half of the number
+        for (int i = 0; i < x / 2; i++) {
+            if (i * i == x) {
+                return i;
+            }
+
+            if (i > low && i < high) {
+                return i;
+            }
+        } 
+        return -1;
     }
 }
