@@ -22,8 +22,8 @@ public class MathFunctionTest {
     public void sqrtTest() {
         // Ensure methods are consistent
         for (int i = 0; i < 100; i++) {
-            int lower = (int) Math.sqrt(i) - 1;
-            int upper = (int) Math.sqrt(i) + 1;
+            int lower = i / 2;
+            int upper = i * 2;
             assertEquals(MathFunction.sqrt(i, lower, upper), MathFunction.sqrtIterative(i, lower, upper));
         }
     }

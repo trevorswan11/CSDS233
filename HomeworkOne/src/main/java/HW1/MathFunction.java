@@ -55,7 +55,7 @@ public class MathFunction {
      * @param x The value to take the square root of 1
      * @param low The lower bound for the square root
      * @param high The upper bound for the square root
-     * @return The value (between bounds) for teh square root
+     * @return The value (between bounds) for the square root
      */
     public static int sqrt(int x, int low, int high) {
         if (low > high || x < 0 || low < 0 || high < 0)
@@ -77,19 +77,45 @@ public class MathFunction {
      * @param x The value to take the square root of
      * @param low The lower bound for the square root
      * @param high The upper bound for the square root
-     * @return The value (between bounds) for teh square root
+     * @return The value (between bounds) for the square root
      */
     public static int sqrtIterative(int x, int low, int high) {
-        // Square root can only be at most half of the number
-        for (int i = 0; i < x / 2; i++) {
-            if (i * i == x) {
-                return i;
-            }
+        if (low > high || x < 0 || low < 0 || high < 0) {
+            return -1;
+        }
 
-            if (i > low && i < high) {
-                return i;
+        // Start Binary search
+        while (low <= high) {
+            // Calculate the middle value and its square
+            int mid = (low + high) / 2;
+            int midSquared = mid * mid;
+
+            // Compare the squared value to the inputted one
+            if (midSquared == x) {
+                return mid;
             }
+            else if (midSquared > x) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+
+        // Compare distance of squared value to input
+        int distLow = Math.abs(low * low - x);
+        int distHigh = Math.abs(high * high - x);
+        
+        // Return the closest value
+        if (distHigh > distLow) {
+            return low;
         } 
-        return -1;
+        else {
+            return high;
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(sqrtIterative(2, 2, 8));
     }
 }
