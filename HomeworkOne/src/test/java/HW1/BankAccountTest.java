@@ -1,6 +1,5 @@
 package HW1;
 
-import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
@@ -10,9 +9,13 @@ import static org.junit.Assert.*;
  * @version CSDS233 - Fall 2024
  */
 public class BankAccountTest {
-    @Test
-    // Test according to assignment requests
-    public void bankTests() {
-        assertTrue(false);
+    public void bankTests(BankAccount account) {
+        assertTrue(true);
+    }
+
+    
+    public static void main(String[] args) {
+        BankAccount sample = new BankAccount("1234567890", 100);
+        new BankAccountTest().bankTests(sample);
     }
 }

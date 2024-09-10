@@ -46,7 +46,8 @@ public class BankAccount {
      * @param amount The amount to be added
      */
     public void deposit(double amount) {
-
+        // Sets the balance of the account to the current plus the amount
+        this.setBalance(this.getBalance() + amount);
     }
 
     /**
@@ -56,6 +57,13 @@ public class BankAccount {
      * @return a boolean value indicated whether the withdrawal was successful or not
      */
     public boolean withdraw(double amount) {
+        // Prevent withdrawal if amount would go negative
+        if (this.getBalance() - amount < 0) {
+            return false;
+        }
+
+        // Set the balance to the current - the amount
+        this.setBalance(this.getBalance() - amount);
         return true;
     }
 }
