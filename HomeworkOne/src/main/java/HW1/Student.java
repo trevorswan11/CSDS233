@@ -56,7 +56,7 @@ public class Student {
      * @param grade The grade to be added
      */
     public void addGrade(int grade) {
-
+        this.getGrades().add(new Integer(grade));
     }
 
     /**
@@ -65,6 +65,11 @@ public class Student {
      * @return The computed grade average
      */
     public double getAverageGrade() {
-        return 0;
+        int sum = 0;
+        int size = this.getGrades().size();
+        for (int i = 0; i < size; i++) {
+            sum += this.getGrades().get(i);
+        }
+        return (size == 0) ? 0 : (sum / size);
     }
 }
