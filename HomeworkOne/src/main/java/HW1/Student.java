@@ -12,7 +12,11 @@ public class Student {
     // Needed attributes
     private String name;
     private String studentId;
-    private ArrayList<Integer> grades;
+    private ArrayList<Integer> grades = new ArrayList<Integer>();
+
+    // Privately keep track of grade info
+    private int numGrades = 0;
+    private int sum = 0;
 
     // Boilerplate
     public void setName(String name) {
@@ -30,10 +34,6 @@ public class Student {
     public String getId() {
         return this.studentId;
     }
-
-    public void setGrades(ArrayList<Integer> grades) {
-        this.grades = grades;
-    } 
 
     public ArrayList<Integer> getGrades() {
         return this.grades;
@@ -57,19 +57,19 @@ public class Student {
      */
     public void addGrade(int grade) {
         this.getGrades().add(new Integer(grade));
+
+        // Increase the counter and sum for constant average access
+        numGrades++;
+        sum += grade;
     }
 
     /**
      * Computes the average grade for the student.
+     * !Time complexity reduces to O(1), running totals kept
      * 
      * @return The computed grade average
      */
     public double getAverageGrade() {
-        int sum = 0;
-        int size = this.getGrades().size();
-        for (int i = 0; i < size; i++) {
-            sum += this.getGrades().get(i);
-        }
-        return (size == 0) ? 0 : (sum / size);
+        return (numGrades == 0) ? 0 : (sum / numGrades);
     }
 }

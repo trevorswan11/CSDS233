@@ -56,7 +56,7 @@ public class Book {
      * @return A formatted String describing the book.
      */
     public String getDetails() {
-        return String.format("This is %s, by %s with isbn: %s",
+        return String.format("This is \"%s\", by %s with isbn: %s",
                 title, author, isbn);
     }
 }

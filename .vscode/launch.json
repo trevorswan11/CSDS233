@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Book",
+            "request": "launch",
+            "mainClass": "HW1.Book",
+            "projectName": "HomeworkOne"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
