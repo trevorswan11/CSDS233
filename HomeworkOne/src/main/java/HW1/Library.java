@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Library {
     // Needed attribute
-    private ArrayList<Book> books;
+    private ArrayList<Book> books = new ArrayList<>();
 
     // Boilerplate
     public ArrayList<Book> getBooks() {
@@ -27,7 +27,7 @@ public class Library {
      * @param book The Book to be added
      */
     public void addBook(Book book) {
-
+        this.getBooks().add(book);
     }
 
     /**
@@ -37,13 +37,23 @@ public class Library {
      * @return A boolean value indicated if removal was successful
      */
     public boolean removeBook(String isbn) {
-        return true;
+        ArrayList<Book> library = this.getBooks();
+        for (int i = 0; i < library.size(); i++) {
+            if (library.get(i).getISBN().equals(isbn)) {
+                library.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
-     * Prints all of the books in teh library with their details.
+     * Prints all of the books in the library with their details.
      */
     public void printBooks() {
-        
+        // Iterates through the library and prints each book's details
+        for (Book book : this.getBooks()) {
+            System.out.println(book.getDetails());
+        }
     }
 }
