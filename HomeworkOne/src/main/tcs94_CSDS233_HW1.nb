@@ -1,0 +1,347 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11431,        339]
+NotebookOptionsPosition[      8630,        276]
+NotebookOutlinePosition[      9032,        292]
+CellTagsIndexPosition[      8989,        289]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["CSDS233 Assignment 1", "Title",
+ CellChangeTimes->{{3.9359309165706406`*^9, 
+  3.935930928437589*^9}},ExpressionUUID->"8ccb5089-3984-4a26-be06-\
+ecff7fd90030"],
+
+Cell["Trevor Swan - Fall 2024", "Subtitle",
+ CellChangeTimes->{{3.9359309339083652`*^9, 
+  3.935930946812002*^9}},ExpressionUUID->"488b9ace-233c-4192-b3bd-\
+eb2c5c20c926"],
+
+Cell[CellGroupData[{
+
+Cell["Problem 1 - Big-O Notation", "Chapter",
+ CellChangeTimes->{{3.935930952098569*^9, 
+  3.935930966498358*^9}},ExpressionUUID->"10888be9-24ae-481d-92ec-\
+56e1b7709ed0"],
+
+Cell[CellGroupData[{
+
+Cell["Functions", "Section",
+ CellChangeTimes->{{3.9359326865918107`*^9, 
+  3.935932687313765*^9}},ExpressionUUID->"d173ceec-c060-4d3f-928d-\
+b174c4ca2b0a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ComputeLimit", "[", "f_Function", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "limitResult", "}"}], ",", 
+    RowBox[{
+     RowBox[{"limitResult", "=", 
+      RowBox[{"Limit", "[", 
+       RowBox[{
+        RowBox[{"f", "[", "N", "]"}], ",", 
+        RowBox[{"N", "->", "Infinity"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "\"\<The limit of the function as N -> Infinity is: \>\"", ",", 
+       "limitResult"}], "]"}], ";", "\[IndentingNewLine]", "limitResult"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.935931024124179*^9, 3.935931024124179*^9}, {
+  3.935931089005864*^9, 
+  3.9359310949281635`*^9}},ExpressionUUID->"2952660e-22fa-4609-99f3-\
+e0ded4aadfe3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Responses", "Section",
+ CellChangeTimes->{{3.935932694303821*^9, 
+  3.9359326964009333`*^9}},ExpressionUUID->"3e9b4680-c282-43e0-be36-\
+9fbfb46abade"],
+
+Cell[CellGroupData[{
+
+Cell["a) 2N+5 = O(N)", "Subsection",
+ CellChangeTimes->{{3.93593097998584*^9, 3.935930981426724*^9}, {
+  3.9359310169452085`*^9, 
+  3.9359310442549505`*^9}},ExpressionUUID->"33194c05-662e-4fd4-aa19-\
+168ce7622e68"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ComputeLimit", "[", 
+   RowBox[{"Function", "[", 
+    RowBox[{"N", ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", "*", "N"}], " ", "-", " ", "5"}], ")"}], "/", "N"}]}], 
+    "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.935931056847415*^9, 3.935931131621689*^9}, {
+  3.935931222050266*^9, 3.935931222954021*^9}, {3.9359312638172812`*^9, 
+  3.9359312703867083`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"59a423c5-b812-4cce-a404-a87c0950f018"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The limit of the function as N -> Infinity is: \"\>", 
+   "\[InvisibleSpace]", "2"}],
+  SequenceForm["The limit of the function as N -> Infinity is: ", 2],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.9359312655344706`*^9, 3.93593127210603*^9}},
+ CellLabel->
+  "During evaluation of \
+In[7]:=",ExpressionUUID->"45e612a2-2d98-4009-909c-ad6546610c31"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["b) 0.01N = O(N^0.99)", "Subsection",
+ CellChangeTimes->{{3.9359312907196765`*^9, 3.935931293724187*^9}, {
+  3.9359313566861863`*^9, 
+  3.9359313657675824`*^9}},ExpressionUUID->"6a7ff29c-de4e-4236-aea6-\
+f514d4817e6d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ComputeLimit", "[", 
+   RowBox[{"Function", "[", 
+    RowBox[{"N", ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"0.01", "N"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"N", "^", "0.99"}], ")"}]}]}], "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.9359314495580845`*^9, 3.9359314596641197`*^9}, {
+  3.9359314937158985`*^9, 3.9359315087382812`*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"a43b25fd-811f-446f-a6b5-b7d2c1950da1"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The limit of the function as N -> Infinity is: \"\>", 
+   "\[InvisibleSpace]", "\[Infinity]"}],
+  SequenceForm["The limit of the function as N -> Infinity is: ", 
+   DirectedInfinity[1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.935931504428266*^9, 3.9359315091097803`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[9]:=",ExpressionUUID->"58884530-a3c1-4a4f-893d-9a4cbfd6a873"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["c) 2^N = O(2^{N/2})", "Subsection",
+ CellChangeTimes->{{3.9359312907196765`*^9, 3.935931293724187*^9}, {
+  3.9359313566861863`*^9, 
+  3.9359313999152937`*^9}},ExpressionUUID->"7bced226-ac85-4f78-814e-\
+622a67f6f6df"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ComputeLimit", "[", 
+  RowBox[{"Function", "[", 
+   RowBox[{"N", ",", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"2", "^", "N"}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"2", "^", 
+       RowBox[{"(", 
+        RowBox[{"N", "/", "2"}], ")"}]}], ")"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9359317359822445`*^9, 3.935931760136264*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"01d8156d-1219-4070-b85a-749a3d7cd35c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The limit of the function as N -> Infinity is: \"\>", 
+   "\[InvisibleSpace]", "\[Infinity]"}],
+  SequenceForm["The limit of the function as N -> Infinity is: ", 
+   DirectedInfinity[1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9359317609699535`*^9},
+ CellLabel->
+  "During evaluation of \
+In[10]:=",ExpressionUUID->"0e67a1c7-def9-4857-a455-203e1e57967e"],
+
+Cell[BoxData["\[Infinity]"], "Output",
+ CellChangeTimes->{3.9359317609720125`*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"ee174b71-70de-4c73-b59f-a4da5db3489f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["d) ln(N) = O(sqrtN)", "Subsection",
+ CellChangeTimes->{{3.9359312907196765`*^9, 3.935931293724187*^9}, {
+  3.9359313566861863`*^9, 3.9359313657675824`*^9}, {3.935931407207926*^9, 
+  3.935931422683233*^9}},ExpressionUUID->"e136e3b0-f17b-403c-86cb-\
+017d607511a1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ComputeLimit", "[", 
+   RowBox[{"Function", "[", 
+    RowBox[{"N", ",", 
+     RowBox[{
+      RowBox[{"Log", "[", "N", "]"}], "/", 
+      RowBox[{"Sqrt", "[", "N", "]"}]}]}], "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.935932278048334*^9, 3.9359323155413933`*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"0d65e0d9-8352-47f6-b608-58e35a415e83"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The limit of the function as N -> Infinity is: \"\>", 
+   "\[InvisibleSpace]", "0"}],
+  SequenceForm["The limit of the function as N -> Infinity is: ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.935932316320401*^9},
+ CellLabel->
+  "During evaluation of \
+In[11]:=",ExpressionUUID->"7dae530b-d913-4369-b7c9-6a814d4dc796"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["e) Nln^2(N^2) = O(N^2ln(N))", "Subsection",
+ CellChangeTimes->{{3.9359312907196765`*^9, 3.935931293724187*^9}, {
+  3.9359313566861863`*^9, 3.9359313657675824`*^9}, {3.9359314088391066`*^9, 
+  3.9359314455705557`*^9}},ExpressionUUID->"9becf7bb-15b5-4bd4-9924-\
+6e4a37e9b3a9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ComputeLimit", "[", 
+   RowBox[{"Function", "[", 
+    RowBox[{"N", ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"N", "*", 
+        RowBox[{"Log", "[", 
+         RowBox[{"N", "^", "2"}], "]"}], "*", 
+        RowBox[{"Log", "[", 
+         RowBox[{"N", "^", "2"}], "]"}]}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"N", "^", "2"}], " ", "*", " ", 
+        RowBox[{"Log", "[", "N", "]"}]}], ")"}]}]}], "]"}], "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.935932481441436*^9, 3.935932488298022*^9}, {
+  3.9359326268494616`*^9, 3.935932666035282*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"2df1d743-1b73-4a02-9d5b-26f829f09382"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The limit of the function as N -> Infinity is: \"\>", 
+   "\[InvisibleSpace]", "0"}],
+  SequenceForm["The limit of the function as N -> Infinity is: ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.93593266637442*^9},
+ CellLabel->
+  "During evaluation of \
+In[12]:=",ExpressionUUID->"db294620-fda2-4613-82c0-4be6daba2813"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{571, 627.5},
+WindowMargins->{{Automatic, 83.5}, {24, Automatic}},
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"37ff7446-8ce5-493d-867b-2c4ebaef580b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 165, 3, 98, "Title",ExpressionUUID->"8ccb5089-3984-4a26-be06-ecff7fd90030"],
+Cell[748, 27, 171, 3, 53, "Subtitle",ExpressionUUID->"488b9ace-233c-4192-b3bd-eb2c5c20c926"],
+Cell[CellGroupData[{
+Cell[944, 34, 171, 3, 69, "Chapter",ExpressionUUID->"10888be9-24ae-481d-92ec-56e1b7709ed0"],
+Cell[CellGroupData[{
+Cell[1140, 41, 156, 3, 67, "Section",ExpressionUUID->"d173ceec-c060-4d3f-928d-b174c4ca2b0a"],
+Cell[1299, 46, 780, 21, 124, "Input",ExpressionUUID->"2952660e-22fa-4609-99f3-e0ded4aadfe3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2116, 72, 156, 3, 67, "Section",ExpressionUUID->"3e9b4680-c282-43e0-be36-9fbfb46abade"],
+Cell[CellGroupData[{
+Cell[2297, 79, 214, 4, 54, "Subsection",ExpressionUUID->"33194c05-662e-4fd4-aa19-168ce7622e68"],
+Cell[CellGroupData[{
+Cell[2536, 87, 515, 13, 28, "Input",ExpressionUUID->"59a423c5-b812-4cce-a404-a87c0950f018"],
+Cell[3054, 102, 405, 9, 22, "Print",ExpressionUUID->"45e612a2-2d98-4009-909c-ad6546610c31"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3508, 117, 223, 4, 54, "Subsection",ExpressionUUID->"6a7ff29c-de4e-4236-aea6-f514d4817e6d"],
+Cell[CellGroupData[{
+Cell[3756, 125, 482, 12, 28, "Input",ExpressionUUID->"a43b25fd-811f-446f-a6b5-b7d2c1950da1"],
+Cell[4241, 139, 438, 10, 22, "Print",ExpressionUUID->"58884530-a3c1-4a4f-893d-9a4cbfd6a873"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4728, 155, 222, 4, 54, "Subsection",ExpressionUUID->"7bced226-ac85-4f78-814e-622a67f6f6df"],
+Cell[CellGroupData[{
+Cell[4975, 163, 464, 12, 28, "Input",ExpressionUUID->"01d8156d-1219-4070-b85a-749a3d7cd35c"],
+Cell[5442, 177, 415, 10, 22, "Print",ExpressionUUID->"0e67a1c7-def9-4857-a455-203e1e57967e"],
+Cell[5860, 189, 161, 2, 32, "Output",ExpressionUUID->"ee174b71-70de-4c73-b59f-a4da5db3489f"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6070, 197, 268, 4, 54, "Subsection",ExpressionUUID->"e136e3b0-f17b-403c-86cb-017d607511a1"],
+Cell[CellGroupData[{
+Cell[6363, 205, 386, 9, 28, "Input",ExpressionUUID->"0d65e0d9-8352-47f6-b608-58e35a415e83"],
+Cell[6752, 216, 381, 9, 22, "Print",ExpressionUUID->"7dae530b-d913-4369-b7c9-6a814d4dc796"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7182, 231, 280, 4, 54, "Subsection",ExpressionUUID->"9becf7bb-15b5-4bd4-9924-6e4a37e9b3a9"],
+Cell[CellGroupData[{
+Cell[7487, 239, 696, 19, 48, "Input",ExpressionUUID->"2df1d743-1b73-4a02-9d5b-26f829f09382"],
+Cell[8186, 260, 380, 9, 22, "Print",ExpressionUUID->"db294620-fda2-4613-82c0-4be6daba2813"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

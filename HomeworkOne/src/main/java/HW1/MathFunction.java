@@ -114,8 +114,4 @@ public class MathFunction {
             return high;
         }
     }
-    
-    public static void main(String[] args) {
-        System.out.println(sqrtIterative(2, 2, 8));
-    }
 }

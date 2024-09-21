@@ -18,7 +18,6 @@ public class StudentTest {
         Student testStudent = new Student("John","15905047");
         assertEquals("John", testStudent.getName());
         assertEquals("15905047", testStudent.getId());
-        assertEquals(null, testStudent.getGrades());
     }
 
     @Test

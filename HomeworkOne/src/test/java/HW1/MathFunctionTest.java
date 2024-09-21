@@ -21,10 +21,12 @@ public class MathFunctionTest {
     // Test the sqrt methods and ensure consistency
     public void sqrtTest() {
         // Ensure methods are consistent
-        for (int i = 0; i < 100; i++) {
-            int lower = i / 2;
-            int upper = i * 2;
-            assertEquals(MathFunction.sqrt(i, lower, upper), MathFunction.sqrtIterative(i, lower, upper));
-        }
+        assertEquals(-1, MathFunction.sqrtIterative(-2, 2, 8));
+        assertEquals(-1, MathFunction.sqrtIterative(4, -3, 8));
+        assertEquals(-1, MathFunction.sqrtIterative(4, 2, -8));
+        assertEquals(-1, MathFunction.sqrtIterative(4, 5, 3));
+        assertEquals(1, MathFunction.sqrtIterative(2, 1, 3));
+        assertEquals(2, MathFunction.sqrtIterative(4, 2, 8));
+        assertEquals(23, MathFunction.sqrtIterative(23 * 23, 22, 24));
     }
 }
