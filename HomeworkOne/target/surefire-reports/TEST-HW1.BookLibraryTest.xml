@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="HW1.BookLibraryTest" time="0.04" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="HW1.BookLibraryTest" time="0.016" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\Trevor\AppData\Local\Temp\surefire14801369497431343366\surefirebooter6272755670444973267.jar C:\Users\Trevor\AppData\Local\Temp\surefire14801369497431343366 2024-09-17T16-11-18_432-jvmRun1 surefire10404700983180338932tmp surefire_016099087746946064772tmp"/>
+    <property name="sun.java.command" value="C:\Users\Trevor\AppData\Local\Temp\surefire379480789601900176\surefirebooter6806207457183960095.jar C:\Users\Trevor\AppData\Local\Temp\surefire379480789601900176 2024-09-29T14-07-58_447-jvmRun1 surefire16015013997725603372tmp surefire_012874514334014361393tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="BookLibraryTest"/>
+    <property name="test" value=""/>
     <property name="surefire.test.class.path" value="C:\Users\Trevor\OneDrive\Documents\CWRU\Fall 2024\CSDS233\CSDS233\HomeworkOne\target\test-classes;C:\Users\Trevor\OneDrive\Documents\CWRU\Fall 2024\CSDS233\CSDS233\HomeworkOne\target\classes;C:\Users\Trevor\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Trevor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Trevor"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Trevor\AppData\Local\Temp\surefire14801369497431343366\surefirebooter6272755670444973267.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Trevor\AppData\Local\Temp\surefire379480789601900176\surefirebooter6806207457183960095.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.12+8-LTS-286"/>
@@ -58,6 +58,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="libraryTest" classname="HW1.BookLibraryTest" time="0.019"/>
+  <testcase name="libraryTest" classname="HW1.BookLibraryTest" time="0.015"/>
   <testcase name="booksDetailsTest" classname="HW1.BookLibraryTest" time="0"/>
 </testsuite>

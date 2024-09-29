@@ -118,10 +118,29 @@ public class NumLinkedList implements Iterable<IntegerNode> {
     }
 
     /**
-     * Reverses the elements in a list in constant space with linear time 
+     * Reverses the elements in a list
+     * 
+     * !Operates with constant space in linear time 
      */
     public void reverse() {
+        // Create pointers to traverse the list and track nodes
+        IntegerNode previous = null;
+        IntegerNode current = this.getHead();
+        IntegerNode next = null;
 
+        // Loop through the entire list
+        while (current != null) {
+            // Remember the next node
+            next = current.getNext();
+
+            // Change the current nodes pointer to point to the previous node
+            current.setNext(previous);
+
+            // Advance the previous and current node's pointers
+            previous = current;
+            current = next;
+        }
+        this.setHead(previous);
     }
     
     /**
@@ -132,8 +151,50 @@ public class NumLinkedList implements Iterable<IntegerNode> {
      * @return The merged NumLinkedList
      */
     public static NumLinkedList merge(NumLinkedList list1, NumLinkedList list2) {
-        return null;
+        // Create a dummy node with no data and a traversal pointer
+        IntegerNode dummy = new IntegerNode(0); // Initialize with any value
+        IntegerNode trav = dummy;
+    
+        // Get the heads of both lists to traverse
+        IntegerNode head1 = list1.getHead();
+        IntegerNode head2 = list2.getHead();
+    
+        // Traverse both lists until one is null
+        while (head1 != null && head2 != null) {
+            IntegerNode newNode;
+            
+            // Append the lesser one to trav and move forward
+            if (head1.getElement() < head2.getElement()) {
+                // Create a new node with the value from head1
+                newNode = new IntegerNode(head1.getElement());
+                head1 = head1.getNext();
+            } else {
+                // Create a new node with the value from head2
+                newNode = new IntegerNode(head2.getElement());
+                head2 = head2.getNext();
+            }
+    
+            // Link the new node to the merged list
+            trav.setNext(newNode);
+            trav = newNode;
+        }
+    
+        // Append the remaining elements from each non-null list
+        while (head1 != null) {
+            trav.setNext(new IntegerNode(head1.getElement()));
+            trav = trav.getNext();
+            head1 = head1.getNext();
+        }
+        
+        while (head2 != null) {
+            trav.setNext(new IntegerNode(head2.getElement()));
+            trav = trav.getNext();
+            head2 = head2.getNext();
+        }
+    
+        return new NumLinkedList(dummy.getNext());
     }
+        
 
     /**
      * Duplicates a list with different memory addresses and new pointers
@@ -142,7 +203,81 @@ public class NumLinkedList implements Iterable<IntegerNode> {
      * @return a new NumLinkedList that is a duplicate of the original
      */
     public static NumLinkedList duplicate(NumLinkedList list1) {
-        return null;
+        // Check if the original list is empty
+        if (list1 == null || !list1.iterator().hasNext()) {
+            return new NumLinkedList(null);
+        }
+
+        // Create an iterator if the list has elements
+        Iterator<IntegerNode> trav = list1.iterator();
+
+        // Initialize the head and the pointer to aid in list creation
+        IntegerNode headCopy = new IntegerNode(trav.next().getElement(), null);
+        IntegerNode currentCopy = headCopy;
+
+        // Create a new node from the element data of trav 
+        while (trav.hasNext()) {
+            IntegerNode newNode = new IntegerNode(trav.next().getElement(), null);
+
+            // Set the next node and advance the creation pointer
+            currentCopy.setNext(newNode);
+            currentCopy = newNode;
+
+        }
+        return new NumLinkedList(headCopy);
+    }
+
+    /**
+     * Prints the elements in a List in order
+     * 
+     * @return the formatted string representation of the list
+     */
+    @Override
+    public String toString() {
+        // Create an iterator and builder for memory efficiency
+        Iterator<IntegerNode> trav = this.iterator();
+        StringBuilder listString = new StringBuilder();
+
+        // Append each element to the builder separated by a pointer
+        while (trav.hasNext()) {
+            listString.append(trav.next().getElement());
+            listString.append(" -> ");
+        }
+        return listString.append("null").toString();
+    }
+
+    /**
+     * Checks if elements in a list are equal
+     * 
+     * @param obj the object to test against the called list
+     * @return true if the objects are exactly equal
+     */
+    @Override
+    public boolean equals(Object obj) {
+        // Check if the object is the same reference
+        if (this == obj) {
+            return true;
+        }
+
+        // Check if the object is of the same type
+        if (!(obj instanceof NumLinkedList)) {
+            return false;
+        }
+
+        // Typecast the object and create two iterators
+        NumLinkedList list2 = (NumLinkedList) obj;
+        Iterator<IntegerNode> itr1 = this.iterator();
+        Iterator<IntegerNode> itr2 =  list2.iterator();
+
+        // Iterate through both lists and compare each element
+        while (itr1.hasNext() && itr2.hasNext()) {
+            if (itr1.next().getElement() != itr2.next().getElement()) {
+                return false;
+            }
+        }
+
+        // Check if both lists have had their elements exhausted
+        return !itr1.hasNext() && !itr2.hasNext();
     }
 
     /**

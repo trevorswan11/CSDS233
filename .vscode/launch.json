@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "IntegerNode",
+            "request": "launch",
+            "mainClass": "NumLinkedList.IntegerNode",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "app",
+            "request": "launch",
+            "mainClass": "NumLinkedList.app",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "NumLinkedList",
+            "request": "launch",
+            "mainClass": "NumLinkedList.NumLinkedList",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
             "name": "Book",
             "request": "launch",
             "mainClass": "HW1.Book",

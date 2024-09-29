@@ -26,6 +26,16 @@ public class IntegerNode {
     }
 
     /**
+     * Creates an IntegerNode with a given node and a null pointer
+     * 
+     * @param element the int to set as the node's element
+     */
+    public IntegerNode(int element) {
+        this.setElement(element);
+        this.setNext(null);
+    }
+
+    /**
      * Return the element of the current node
      * 
      * @return the int element
