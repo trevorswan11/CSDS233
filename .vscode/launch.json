@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "QueuedStackTest",
+            "request": "launch",
+            "mainClass": "QueuedStack.QueuedStackTest",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "QueuedStack",
+            "request": "launch",
+            "mainClass": "QueuedStack.QueuedStack",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
             "name": "IntegerNode",
             "request": "launch",
             "mainClass": "NumLinkedList.IntegerNode",
