@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StackifiedQueueTest",
+            "request": "launch",
+            "mainClass": "StackifiedQueue.StackifiedQueueTest",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "StackifiedQueue",
+            "request": "launch",
+            "mainClass": "StackifiedQueue.StackifiedQueue",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
             "name": "QueuedStackTest",
             "request": "launch",
             "mainClass": "QueuedStack.QueuedStackTest",
