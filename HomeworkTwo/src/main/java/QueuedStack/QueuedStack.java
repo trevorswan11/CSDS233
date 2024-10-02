@@ -2,7 +2,6 @@ package QueuedStack;
 
 import java.util.Queue;
 import java.util.EmptyStackException;
-import java.util.LinkedList;
 
 /**
  * A class to mimic the behavior of a stack using a single queue.
@@ -103,93 +102,5 @@ public class QueuedStack<T> {
         // Remove the last two characters to improve format
         result.delete(result.length() - 2, result.length());
         return result.toString();
-    }
-
-    public static boolean isValid(String s) {
-        QueuedStack<Character> paren = new QueuedStack<>(new LinkedList<>());
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[') {
-                paren.push(s.charAt(i));
-            } else if (s.charAt(i) == ')' && !paren.empty() && paren.peek() == '(') {
-                paren.pop();
-            } else if (s.charAt(i) == '}' && !paren.empty() && paren.peek() == '{') {
-                paren.pop();
-            } else if (s.charAt(i) == ']' && !paren.empty() && paren.peek() == '[') {
-                paren.pop();
-            } else {
-                return false;
-            }
-        }
-        return paren.empty();
-    }
-    public static void main(String[] args) {
-        String[][] testCases = {
-            {"()", "true"},
-            {"()[]{}", "true"},
-            {"(]", "false"},
-            {"([)]", "false"},
-            {"{[]}", "true"},
-            {"", "true"},  // Empty string is considered valid
-            {"(((((((", "false"},  // Only opening brackets
-            {"}}}}}}", "false"},   // Only closing brackets
-            {"{[()()]}", "true"},  // Nested valid parentheses
-            {"{[()()]}]", "false"},  // Mismatched closing bracket
-            {"()", "true"},
-            {"()[]{}", "true"},
-            {"(]", "false"},
-            {"([)]", "false"},
-            {"{[]}", "true"},
-            {"", "true"}, // Empty string is valid
-            {"(((((((", "false"}, // Only opening brackets
-            {"}}}}}}", "false"}, // Only closing brackets
-            {"{[()()]}", "true"}, // Nested valid parentheses
-            {"{[()()]}]", "false"}, // Mismatched closing bracket
-            {"{", "false"}, // Single open bracket
-            {"}", "false"}, // Single close bracket
-            {"[({})]", "true"}, // All types of matching brackets
-            {"[(])", "false"}, // Misordered brackets
-            {"[[[[[[[[]]]]]]]]", "true"}, // Deeply nested brackets
-            {"[({(())})]", "true"}, // Multiple levels of valid nesting
-            {"[{)]}", "false"}, // Closing bracket out of order
-            {"((", "false"}, // Unmatched open parentheses
-            {"))", "false"}, // Unmatched close parentheses
-            {"({[]})", "true"}, // Correctly nested, multiple types
-            {"([{})]", "false"}, // Incorrect closing bracket for one type
-            {"(()", "false"}, // Missing closing parenthesis
-            {"())", "false"}, // Extra closing parenthesis
-            {"[]", "true"}, // Simple pair of square brackets
-            {"{}", "true"}, // Simple pair of curly brackets
-            {"([{}])", "true"}, // Nested, all types valid
-            {"[{]}", "false"}, // Incorrect closing bracket
-            {"({{{{{}}}}})", "true"}, // Deeply nested curly brackets
-            {"((((()))))", "true"}, // Long balanced parentheses
-            {"([]{})", "true"}, // Interleaved but balanced brackets
-            {"()(()", "false"}, // Unbalanced parentheses
-            {"({[}", "false"}, // Incomplete and misordered
-            {"{[]((){})}", "true"}, // Complex nested valid case
-            {"{[", "false"}, // Incomplete opening brackets
-            {"]}", "false"}, // Incomplete closing brackets
-            {"{[[(({{}}))]]}", "true"}, // Multiple types, nested deeply
-            {"[[]]({})", "true"}, // Mixed types, valid
-            {"[{([])}]", "true"}, // Nested with correct ordering
-            {"[{()]", "false"}, // One extra closing bracket
-            {"{{{{{{{{{{{{}}}}}}}}}}}}", "true"}, // Large number of nested curly brackets
-            {"({[({[({[({[]})]})]})]})", "true"}, // Extremely deeply nested brackets
-            {"{[}]", "false"}, // Misplaced closing curly bracket
-            {"((()()))", "true"}, // Balanced, multiple levels
-            {"({{{{{}}}}})()", "true"}, // Valid with extra parentheses outside
-            {"(()[)", "false"}, // Misordered closing bracket
-            {"([])", "true"}, // Simple nested valid case
-            {"{{}[]", "false"}, // Missing closing square bracket
-            {"{([])}", "true"}, // Balanced, simple nesting
-            {"(([[{{}}]]))", "true"} // Nested multiple levels with all bracket types
-        };
-        String result;
-        boolean winner = true;
-        for (String[] testCase : testCases) {
-            System.out.println("Input: " + testCase[0] + " Result: " + (result = new Boolean(testCase[1]).equals(isValid(testCase[0])) ? "correct" : "failure"));
-            winner = result.equals("correct");
-        }
-        System.out.println(winner);
     }
 }
