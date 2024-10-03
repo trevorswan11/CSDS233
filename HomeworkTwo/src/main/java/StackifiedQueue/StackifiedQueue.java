@@ -14,7 +14,7 @@ public class StackifiedQueue<T> {
      * 
      * @apiNote these stacks cannot be directly accessed or modified
      */
-    Stack<T> inputStack, outputStack;
+    private Stack<T> inputStack, outputStack;
 
     /**
      * Creates a StackifiedQueue based on two input stacks
@@ -32,7 +32,7 @@ public class StackifiedQueue<T> {
      * 
      * @param element the element of type T to add to the queue
      * @return true if the element was successfully added
-     * @apiNote Stacks are 'infinite' is length so true is always returned
+     * @apiNote Stacks are 'infinite' in length so true is always returned
      */
     public boolean add(T element) {
         return this.inputStack.add(element);
@@ -90,30 +90,23 @@ public class StackifiedQueue<T> {
      */
     @Override
     public String toString() {
-        Stack<T> tempStack = new Stack<>();
-
-        // Transfer inputStack to tempStack to get them in the correct order
-        while (!inputStack.isEmpty()) {
-            tempStack.push(inputStack.pop());
-        }
-
-        // Create a StringBuilder to store the queue elements in order
         StringBuilder result = new StringBuilder();
-        result.append("[");
-
-        // Add elements from outputStack (front of the queue)
+    
+        // Add elements from outputStack (front of the queue, in reverse)
         for (int i = outputStack.size() - 1; i >= 0; i--) {
-            result.append(outputStack.get(i)).append(i > 0 ? ", " : "");
+            result.append(outputStack.get(i));
+            if (i > 0 || !inputStack.isEmpty()) {
+                result.append(", ");
+            }
         }
-
-        // Add elements from tempStack (those originally in inputStack)
-        while (!tempStack.isEmpty()) {
-            T element = tempStack.pop();
-            result.append(outputStack.isEmpty() && tempStack.isEmpty() ? element : element + ", ");
-            inputStack.push(element); // Restore inputStack to its original state
+    
+        // Add elements from inputStack (back of the queue, in the current order)
+        for (int i = 0; i < inputStack.size(); i++) {
+            result.append(inputStack.get(i));
+            if (i < inputStack.size() - 1) {
+                result.append(", ");
+            }
         }
-        result.append("]");
-
         return result.toString();
     }
 

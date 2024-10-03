@@ -5,6 +5,7 @@
         "linkedlist",
         "Misordered",
         "Phonebook",
+        "premade",
         "Stackified"
     ],
     "java.debug.settings.onBuildFailureProceed": true
