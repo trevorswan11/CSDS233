@@ -16,7 +16,7 @@ public class QueuedStack<T> {
      * 
      * @apiNote There is no way to access this field directly
      */
-    Queue<T> queue;
+    private Queue<T> queue;
 
     /**
      * Creates a QueuedStack with a single Queue object
