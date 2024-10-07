@@ -1,11 +1,14 @@
 {
     "cSpell.words": [
         "bools",
+        "inorder",
         "Javadoc",
         "linkedlist",
         "Misordered",
         "Phonebook",
+        "postorder",
         "premade",
+        "preorder",
         "Stackified"
     ],
     "java.debug.settings.onBuildFailureProceed": true
