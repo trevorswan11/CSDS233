@@ -14,6 +14,8 @@ public class BinarySearchTreeMain {
      * The entry point for the class to display the required test cases 
      */
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.createTree(new int[] {1, 2, -2, -4, 5, 6, -7, -5, 9, 10});
+        bst.printTree();
     }
 }
