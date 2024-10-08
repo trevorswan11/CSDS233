@@ -22,9 +22,9 @@ public class StackifiedQueue<T> {
      * @param inputStack  The stack to use as the input
      * @param outputStack The stack to use as the output
      */
-    public StackifiedQueue(Stack<T> inputStack, Stack<T> outputStack) {
-        this.inputStack = inputStack;
-        this.outputStack = outputStack;
+    public StackifiedQueue() {
+        this.inputStack = new Stack<T>();
+        this.outputStack = new Stack<T>();
     }
 
     /**

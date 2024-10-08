@@ -1,7 +1,6 @@
 package QueuedStack;
 
 import java.util.EmptyStackException;
-import java.util.LinkedList;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -31,7 +30,7 @@ public class QueuedStackTest {
         };
         
         // Create a queued stack out of a linkedlist storing strings 
-        QueuedStack<String> qsString = new QueuedStack<>(new LinkedList<>());
+        QueuedStack<String> qsString = new QueuedStack<>();
         
         // Push the elements in additions and check the content against the results
         for (int i = 0; i < results.length; i++) {
@@ -44,7 +43,7 @@ public class QueuedStackTest {
     @Test
     public void qsPeekPopTest() {
         // Create a queued stack out of a linkedlist storing chars 
-        QueuedStack<Character> qsChar = new QueuedStack<>(new LinkedList<>());
+        QueuedStack<Character> qsChar = new QueuedStack<>();
 
         // Create an array containing all of the characters in the alphabet
         char[] alphabet = new char[26];
@@ -67,7 +66,7 @@ public class QueuedStackTest {
     @Test
     public void qsExceptionHandling() {
         // Create a queued stack out of a linkedlist storing bools
-        QueuedStack<Boolean> qsBool = new QueuedStack<>(new LinkedList<>());
+        QueuedStack<Boolean> qsBool = new QueuedStack<>();
         
         // try to peek then pop to throw two EmptyStackExceptions
         try {
@@ -90,7 +89,7 @@ public class QueuedStackTest {
     @Test
     public void qsEmptyTest() {
         // Create a queued stack out of a linkedlist storing ints 
-        QueuedStack<Integer> qsInteger = new QueuedStack<>(new LinkedList<>());
+        QueuedStack<Integer> qsInteger = new QueuedStack<>();
         
         // Test after creation, after pushing, peeking, and popping
         assertTrue(qsInteger.empty());
@@ -185,7 +184,7 @@ public class QueuedStackTest {
      * @see https://leetcode.com/problems/valid-parentheses/description/
      */
     public static boolean isValid(String s) {
-        QueuedStack<Character> paren = new QueuedStack<>(new LinkedList<>());
+        QueuedStack<Character> paren = new QueuedStack<>();
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[') {
                 paren.push(s.charAt(i));

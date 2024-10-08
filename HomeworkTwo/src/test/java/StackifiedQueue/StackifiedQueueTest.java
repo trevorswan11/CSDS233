@@ -3,8 +3,6 @@ package StackifiedQueue;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-import java.util.Stack;
-
 /**
  * A class to test a mimicked queue using stacks
  * 
@@ -15,7 +13,7 @@ public class StackifiedQueueTest {
     // Test the add method and isEmpty
     @Test
     public void sqAddTest() {
-        StackifiedQueue<Integer> sqInteger = new StackifiedQueue<>(new Stack<>(), new Stack<>());
+        StackifiedQueue<Integer> sqInteger = new StackifiedQueue<>();
         StringBuilder expected = new StringBuilder();
         assertTrue(sqInteger.isEmpty());
         
@@ -31,7 +29,7 @@ public class StackifiedQueueTest {
     // Test the peek and poll methods
     @Test
     public void sqPeekPollTest() {
-        StackifiedQueue<Character> sqChar = new StackifiedQueue<>(new Stack<>(), new Stack<>());
+        StackifiedQueue<Character> sqChar = new StackifiedQueue<>();
 
         // Create an array containing all of the characters in the alphabet
         char[] alphabet = new char[26];
@@ -54,36 +52,5 @@ public class StackifiedQueueTest {
         assertTrue(sqChar.isEmpty());
         assertNull(sqChar.peek());
         assertNull(sqChar.poll());
-    }
-
-    // Test creating a queue with premade stacks, no assertions just printing
-    @Test
-    public void sqNonNullTest() {
-        Stack<String> stringStack1 = new Stack<>(), stringStack2 = new Stack<>();
-
-        // add some strings to the stacks
-        for (int i = 0; i < 11; i++) {
-            stringStack1.add((char)('a' + i) + ":" + i);
-            stringStack2.add((char)('l' + i) + ":" + (10 + i));
-        }
-        
-        // Create the StackifiedQueue with the inputs
-        StackifiedQueue<String> sqString = new StackifiedQueue<String>(stringStack1, stringStack2);
-
-        // Add some numbers to the end of the stack 
-        for (int i = 0; i < 11; i++) {
-            sqString.add("" + i);
-        }
-        System.out.println(sqString);
-
-        // Poll the first 21 elements and add them to the expected string
-        StringBuilder expected = new StringBuilder();
-        for (int i = 0; i < 22; i++) {
-            expected.append(i == 0 ? "" : ", ").append(sqString.poll());
-        }
-
-        // Expected should show all of the alpha-numeric keys
-        System.out.println(expected);
-        System.out.println(sqString);
     }
 }

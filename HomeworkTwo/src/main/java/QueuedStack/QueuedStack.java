@@ -2,6 +2,7 @@ package QueuedStack;
 
 import java.util.Queue;
 import java.util.EmptyStackException;
+import java.util.LinkedList;
 
 /**
  * A class to mimic the behavior of a stack using a single queue.
@@ -23,8 +24,8 @@ public class QueuedStack<T> {
      * 
      * @param queue the queue to use for the stack
      */
-    public QueuedStack(Queue<T> queue) {
-        this.queue = queue;
+    public QueuedStack() {
+        this.queue = new LinkedList<T>();
     }
 
     /**
