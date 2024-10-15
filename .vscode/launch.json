@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CircularQueue",
+            "request": "launch",
+            "mainClass": "Queue.CircularQueue",
+            "projectName": "MidtermReview"
+        },
+        {
+            "type": "java",
+            "name": "BST",
+            "request": "launch",
+            "mainClass": "BinaryTree.BST",
+            "projectName": "MidtermReview"
+        },
+        {
+            "type": "java",
             "name": "BinarySearchTreeMain",
             "request": "launch",
             "mainClass": "BinarySearchTree.BinarySearchTreeMain",

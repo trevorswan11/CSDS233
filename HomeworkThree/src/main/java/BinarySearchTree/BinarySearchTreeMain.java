@@ -15,7 +15,7 @@ public class BinarySearchTreeMain {
      */
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
-        bst.createTree(new int[] {1, 2, -2, -4, 5, 6, -7, -5, 9, 10});
+        bst.createTree(new int[] {1, 2, -2, -4, 5, 6, -7, -5, 9, 10, 3});
         bst.printTree();
     }
 }

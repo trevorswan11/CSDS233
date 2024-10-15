@@ -3,13 +3,15 @@
         "bools",
         "inorder",
         "Javadoc",
+        "levelorder",
         "linkedlist",
         "Misordered",
         "Phonebook",
         "postorder",
         "premade",
         "preorder",
-        "Stackified"
+        "Stackified",
+        "treeify"
     ],
     "java.debug.settings.onBuildFailureProceed": true
 }
