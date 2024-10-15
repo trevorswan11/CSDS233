@@ -9,6 +9,13 @@ public class BST<T> {
         this.root = null;                               // Tree should start as being empty and need to build up
     }
 
+    @SuppressWarnings("unchecked")
+    public static <T> BST<T> treeify(int[] keys) {
+        T[] elements = (T[]) (new Object[keys.length]); // We might want to make a null tree for sorting reasons
+        for (int i = 0; i < keys.length; i++) elements[i] = null;
+        return treeify(keys, elements);
+    }
+
     public static <T> BST<T> treeify(int[] keys, T[] elements) {
         if (keys.length != elements.length)
             throw new ArrayStoreException("Number of keys must agree with number of elements.");

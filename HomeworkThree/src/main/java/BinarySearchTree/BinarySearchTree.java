@@ -106,7 +106,52 @@ public class BinarySearchTree {
      * @return the deleted node, null if not found
      */
     public Node delete(int key) {
-        return null;
+        // Find the node with the key to delete
+        Node trav = root;
+        Node parent = null;
+        while (trav != null && trav.key != key) {       
+            parent = trav;
+            if (key < trav.key)
+                trav = trav.left;
+            else
+                trav = trav.right;
+        }
+
+        // Store the element and delete its Node
+        Node deletedNode = trav;;                       
+        deleteNode(trav, parent);
+        return deletedNode;
+    }
+    
+    // Helper method to handle the specific cases of deletion after searching
+    private void deleteNode(Node toDelete, Node parent) {
+        if (toDelete.left == null || toDelete.right == null) {
+            // toDelete has zero or no children
+            Node toDeleteChild = null;                      
+            if (toDelete.left != null)
+                toDeleteChild = toDelete.left;              // check if the left child exists
+            else
+                toDeleteChild = toDelete.right;             // right child either exists or is null
+
+            if (toDelete == this.root)
+                this.root = toDeleteChild;                  // make delete's child the new root
+            else if (toDelete.key < parent.key)
+                parent.left = toDeleteChild;                // toDeleteChild must be less than parent due to BST rules
+            else
+                parent.right = toDeleteChild;
+        } 
+        
+        // toDelete must then have 2 children
+        else {                                            
+            Node replacementParent = toDelete;              
+            Node replacementNode = toDelete.right;
+            while (replacementNode.left != null) {          // Find toDelete's inorder successor     
+                replacementParent = replacementNode;
+                replacementNode = replacementNode.left;
+            }
+            toDelete.key = replacementNode.key;             // Copy the data of the replacement node to the one to be deleted
+            deleteNode(replacementNode, replacementParent); // Delete the copied node - will have either one or zero children
+        }
     }
 
     /**
@@ -153,28 +198,75 @@ public class BinarySearchTree {
      * @return the int height or depth of the tree
      */
     public int height() {
-        return 0;
+        return nodeHeight(this.root);
+    }
+
+    // Helper method to handle height of a tree
+    private int nodeHeight(Node node) {
+        // Node's height is -1 if it is null
+        if (node == null)                               
+            return -1;
+
+        // Recursively call nodeHeight on both subtrees
+        return 1 + Math.max(nodeHeight(node.left), nodeHeight(node.right));
     }
 
     /**
      * Traverses the tree in in-order and prints the elements
      */
-    public void inorderTrav() {
+    public void inorder() {
+        System.out.print("BST.inorder(): ");
+        myInOrder(root);
+        System.out.println();
+    }
 
+    // Recursive helper method to handle traversal
+    private void myInOrder(Node root) {
+        if (root == null)
+            return;
+        myInOrder(root.left);                               // L-N-R order
+        System.out.print(root.key);                         // "In" order = print statement INSIDE (in between recursive calls)
+        System.out.print(" ");
+        myInOrder(root.right);
     }
 
     /**
      * Traverses the tree in pre-order and prints the elements
      */
-    public void preorderTrav() {
+    public void preorder() {
+        System.out.print("BST.preorder(): ");
+        myPreOrder(root);
+        System.out.println();
+    }
 
+    // Recursive helper method to handle traversal
+    private void myPreOrder(Node root) {
+        if (root == null)
+            return;
+        System.out.print(root.key);                         // "pre" order = print statement FIRST (pre-recursion)
+        System.out.print(" ");
+        myPreOrder(root.left);                              // N-L-R order
+        myPreOrder(root.right);
     }
 
     /**
      * Traverses the tree in post-order and prints the elements
      */
-    public void postorderTrav() {
+    public void postorder() {
+        System.out.print("BST.postorder(): ");
+        myPostOrder(root);
+        System.out.println();
+    }
 
+    // Recursive helper method to handle traversal
+    private void myPostOrder(Node root) {
+        if (root == null)
+            return;
+        myPostOrder(root.left);                             // L-R-N order
+        myPostOrder(root.right);
+        System.out.print(root.key);                         // "post" order = print statement AFTER (post-recursion)
+        System.out.print(" ");
+        
     }
 
     /**
