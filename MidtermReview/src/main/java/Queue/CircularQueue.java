@@ -19,6 +19,10 @@ public class CircularQueue<T> {
     public boolean isEmpty() {
         return size == 0;
     }
+    
+    public void push(T item) {
+        enqueue(item);
+    }
 
     public void enqueue(T item) {
         if (isFull())
@@ -28,6 +32,10 @@ public class CircularQueue<T> {
         size++;
     }
 
+    public void pop() {
+        dequeue();
+    }
+
     public T dequeue() {
         if (isEmpty())
             throw new IllegalStateException("Queue is empty.");
@@ -35,6 +43,12 @@ public class CircularQueue<T> {
         head = (head + 1) % this.arr.length;
         size--;
         return value;
+    }
+
+    public T peek() {
+        if (isEmpty())
+            throw new IllegalStateException("Queue is empty.");
+        return this.arr[head];                                      // Simply return the head without changing pointer
     }
 
     @Override

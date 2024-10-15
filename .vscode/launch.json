@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AVLTree",
+            "request": "launch",
+            "mainClass": "BinaryTree.AVLTree",
+            "projectName": "MidtermReview"
+        },
+        {
+            "type": "java",
             "name": "CircularQueue",
             "request": "launch",
             "mainClass": "Queue.CircularQueue",

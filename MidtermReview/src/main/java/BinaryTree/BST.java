@@ -30,8 +30,6 @@ public class BST<T> {
     }
 
     public int height() {
-        if (this.root == null)
-            return -1;
         return nodeHeight(this.root);
     }
 
