@@ -37,12 +37,15 @@ public class BinarySearchTree {
         Node trav = this.root;
         while (trav != null) {
             parent = trav;
+            // If the key is less than trav, it could only be in the left subtree
             if (key < trav.key) {
                 trav = trav.left;
-            } else {
+            } 
+            // Otherwise the key could only be in the right subtree 
+            else {
                 trav = trav.right;
             }
-        }
+        } // This is a basic search algorithm that will not be commented again
 
         // Insert the node according to BST rules
         if (parent == null) {
@@ -56,7 +59,7 @@ public class BinarySearchTree {
     }
 
     /**
-     *  Creates a binary search tree from an array of integers
+     * Inserts an array of integers into the binary tree
      * 
      * @param values the key values to insert into a new tree
      */
@@ -117,8 +120,13 @@ public class BinarySearchTree {
                 trav = trav.right;
         }
 
+        // Tree may not contain the desired key
+        if (trav == null) {
+            return null;
+        }
+        
         // Store the element and delete its Node
-        Node deletedNode = trav;;                       
+        Node deletedNode = trav;                       
         deleteNode(trav, parent);
         return deletedNode;
     }
@@ -305,30 +313,5 @@ public class BinarySearchTree {
             this.left = null;
             this.right = null;
         }
-    }
-
-    public void printTree() {
-        printTree(root, 0);
-    }
-
-    private void printTree(Node node, int space) {
-        if (node == null) {
-            return;
-        }
-        // Increase distance between levels
-        space += 5;
-
-        // Process right child first
-        printTree(node.right, space);
-
-        // Print current node after space count
-        System.out.print("\n");
-        for (int i = 5; i < space; i++) {
-            System.out.print(" ");
-        }
-        System.out.print(node.key);
-
-        // Process left child
-        printTree(node.left, space);
     }
 }
