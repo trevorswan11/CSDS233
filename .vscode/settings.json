@@ -11,6 +11,7 @@
         "premade",
         "preorder",
         "Stackified",
+        "testcase",
         "treeify"
     ],
     "java.debug.settings.onBuildFailureProceed": true

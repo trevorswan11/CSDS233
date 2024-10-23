@@ -270,6 +270,15 @@ public class BinarySearchTree {
     }
 
     /**
+     * Resets the tree, setting the root node to have no children with a desired key.
+     * 
+     * @param key the int key to use for the new root
+     */
+    public void reset(int key) {
+        this.root = new Node(key);
+    }
+
+    /**
      * A nested class to represent a node in the binary tree. Fields are to be
      * accessed and modified directly, there is no boilerplate :)
      * 
