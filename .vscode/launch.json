@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HW4_tcs94_Test",
+            "request": "launch",
+            "mainClass": "HashTable.HW4_tcs94_Test",
+            "projectName": "HomeworkFour"
+        },
+        {
+            "type": "java",
             "name": "Maven Attach",
             "request": "attach",
             "hostName": "localhost",
