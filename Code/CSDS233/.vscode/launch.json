@@ -1,0 +1,154 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "HW4_tcs94_Test",
+            "request": "launch",
+            "mainClass": "HashTable.HW4_tcs94_Test",
+            "projectName": "HomeworkFour"
+        },
+        {
+            "type": "java",
+            "name": "Maven Attach",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": "8000"
+        },
+        {
+            "type": "java",
+            "name": "HW4_tcs94",
+            "request": "launch",
+            "mainClass": "HashTable.HW4_tcs94",
+            "projectName": "HomeworkFour"
+        },
+        {
+            "type": "java",
+            "name": "AVLTree",
+            "request": "launch",
+            "mainClass": "BinaryTree.AVLTree",
+            "projectName": "MidtermReview"
+        },
+        {
+            "type": "java",
+            "name": "CircularQueue",
+            "request": "launch",
+            "mainClass": "Queue.CircularQueue",
+            "projectName": "MidtermReview"
+        },
+        {
+            "type": "java",
+            "name": "BST",
+            "request": "launch",
+            "mainClass": "BinaryTree.BST",
+            "projectName": "MidtermReview"
+        },
+        {
+            "type": "java",
+            "name": "BinarySearchTreeMain",
+            "request": "launch",
+            "mainClass": "BinarySearchTree.BinarySearchTreeMain",
+            "projectName": "HomeworkThree"
+        },
+        {
+            "type": "java",
+            "name": "BinarySearchTree",
+            "request": "launch",
+            "mainClass": "BinarySearchTree.BinarySearchTree",
+            "projectName": "HomeworkThree"
+        },
+        {
+            "type": "java",
+            "name": "StackifiedQueueTest",
+            "request": "launch",
+            "mainClass": "StackifiedQueue.StackifiedQueueTest",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "StackifiedQueue",
+            "request": "launch",
+            "mainClass": "StackifiedQueue.StackifiedQueue",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "QueuedStackTest",
+            "request": "launch",
+            "mainClass": "QueuedStack.QueuedStackTest",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "QueuedStack",
+            "request": "launch",
+            "mainClass": "QueuedStack.QueuedStack",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "IntegerNode",
+            "request": "launch",
+            "mainClass": "NumLinkedList.IntegerNode",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "app",
+            "request": "launch",
+            "mainClass": "NumLinkedList.app",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "NumLinkedList",
+            "request": "launch",
+            "mainClass": "NumLinkedList.NumLinkedList",
+            "projectName": "HomeworkTwo"
+        },
+        {
+            "type": "java",
+            "name": "Book",
+            "request": "launch",
+            "mainClass": "HW1.Book",
+            "projectName": "HomeworkOne"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "BankAccountTest",
+            "request": "launch",
+            "mainClass": "HW1.BankAccountTest",
+            "projectName": "HomeworkOne"
+        },
+        {
+            "type": "java",
+            "name": "MathFunction",
+            "request": "launch",
+            "mainClass": "HW1.MathFunction",
+            "projectName": "HomeworkOne"
+        },
+        {
+            "type": "java",
+            "name": "Phonebook",
+            "request": "launch",
+            "mainClass": "MemoryOOP.Phonebook",
+            "projectName": "LectureCode"
+        },
+        {
+            "type": "java",
+            "name": "ArrayManipulation",
+            "request": "launch",
+            "mainClass": "Recursion.ArrayManipulation",
+            "projectName": "LectureCode"
+        }
+    ]
+}
