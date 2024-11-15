@@ -23,7 +23,16 @@ public class Sort {
      * @param array The array to be sorted
      */
     public void insertionSort(int[] array) {
+        // Loop through whole array, starts comparison with the 1st and 0th index
+        int n = array.length;
+        for (int i = 1; i < n; i++) {
+            int toInsert = array[i], j;
 
+            // Move elements of array[0..i-1] that are less than toInsert one position ahead
+            for (j = i - 1; j >= 0 && array[j] < toInsert; j--)
+                array[j + 1] = array[j];
+            array[j + 1] = toInsert;
+        }
     }
 
     /**
@@ -63,7 +72,7 @@ public class Sort {
      * @param high  The upper index of the partition
      */
     public void quickSort(int[] array, int low, int high) {
-
+        swap(array, 0, 1);
     }
 
     /**
@@ -100,6 +109,20 @@ public class Sort {
         }
         return sb.toString();
     }
+
+    /**
+     * Swaps two elements in an array in-place
+     * 
+     * @param array The array to operate on
+     * @param i The first index to swap
+     * @param i The second index to swap
+     */
+    private static void swap(int[] array, int i, int j) {
+        // Swap using a temporary variable
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp; 
+    };
 
     /**
      * ! Testing
