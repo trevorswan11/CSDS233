@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: Graphs.GraphTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 9, Errors: 0, Skipped: 0, Time elapsed: 0.012 s <<< FAILURE! - in Graphs.GraphTest
-shortestDistanceTest(Graphs.GraphTest)  Time elapsed: 0.001 s  <<< FAILURE!
+Tests run: 9, Failures: 9, Errors: 0, Skipped: 0, Time elapsed: 0.037 s <<< FAILURE! - in Graphs.GraphTest
+shortestDistanceTest(Graphs.GraphTest)  Time elapsed: 0.005 s  <<< FAILURE!
 java.lang.AssertionError
 	at Graphs.GraphTest.shortestDistanceTest(GraphTest.java:60)
 
@@ -18,7 +18,7 @@ addNodeTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
 	at Graphs.GraphTest.addNodeTest(GraphTest.java:18)
 
-printGraphTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
+printGraphTest(Graphs.GraphTest)  Time elapsed: 0.001 s  <<< FAILURE!
 java.lang.AssertionError
 	at Graphs.GraphTest.printGraphTest(GraphTest.java:48)
 
@@ -26,7 +26,7 @@ addEdgeTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
 	at Graphs.GraphTest.addEdgeTest(GraphTest.java:24)
 
-removeEdge(Graphs.GraphTest)  Time elapsed: 0.001 s  <<< FAILURE!
+removeEdge(Graphs.GraphTest)  Time elapsed: 0.002 s  <<< FAILURE!
 java.lang.AssertionError
 	at Graphs.GraphTest.removeEdge(GraphTest.java:42)
 
