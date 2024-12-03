@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Graph",
+            "request": "launch",
+            "mainClass": "Graphs.Graph",
+            "projectName": "HomeworkSix"
+        },
+        {
+            "type": "java",
             "name": "HW4_tcs94_Test",
             "request": "launch",
             "mainClass": "HashTable.HW4_tcs94_Test",
