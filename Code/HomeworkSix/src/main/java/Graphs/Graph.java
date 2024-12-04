@@ -36,6 +36,26 @@ public class Graph {
     }
 
     /**
+     * Checks if a node has a specific edge to another node.
+     * 
+     * @param from   The node at the start of the edge
+     * @param to     The node at the end of the edge
+     * @param weight The weight of the edge
+     * @return True if the node exists in the graph and its edge has the correct
+     *         weight and points to the correct name
+     */
+    public boolean hasEdge(String from, String to, int weight) {
+        // Check the validity of the vertex names and weight
+        if (!this.vertices.containsKey(from) || !this.vertices.containsKey(to) || weight < 0)
+            return false;
+
+        // Use the Vertex has Edge class to check the vertices
+        Vertex v1 = this.vertices.get(from);
+        Vertex v2 = this.vertices.get(to);
+        return v1.hasEdge(to, weight) && v2.hasEdge(from, weight);
+    }
+
+    /**
      * Adds a node to the graph.
      * 
      * @param name The name of the node to insert
@@ -69,7 +89,7 @@ public class Graph {
         // Check for null inputs and invalid weight
         if (from == null || to == null || weight < 0)
             return false;
-        
+
         // Check if either vertex is not in the graph
         if (!this.vertices.containsKey(from))
             return false;
@@ -434,6 +454,23 @@ public class Graph {
             this.encountered = false;
             this.done = false;
             this.cost = Integer.MAX_VALUE;
+        }
+
+        /**
+         * Checks if a vertex has an edge to a specific node with a given weight.
+         * 
+         * @param to     The end node of the edge to check
+         * @param weight The weight of the edge to check
+         * @return True if the edge exists with the weight given
+         */
+        private boolean hasEdge(String to, int weight) {
+            // Check if the vertex contains the edge or input is invalid
+            if (to == null || weight < 0 || !this.edges.containsKey(to))
+                return false;
+
+            // Get the edge and check its end node and weight
+            Edge e = this.edges.get(to);
+            return e.endName.equals(to) && e.weight == weight;
         }
 
         /**

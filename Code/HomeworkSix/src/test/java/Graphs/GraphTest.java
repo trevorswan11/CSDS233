@@ -61,7 +61,20 @@ public class GraphTest {
 
         // Add an edge between the two added vertices
         assertTrue(testGraph.addEdge(toAdd[0], toAdd[1], 2));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[1], 2));
 
+        // Add the rest of the nodes and edges
+        for (int i = 2; i < toAdd.length; i++)
+            testGraph.addNode(toAdd[i]);
+        for (int i = 0; i < toAdd.length; i++)
+            testGraph.addEdge(toAdd[0], toAdd[i], i);
+
+        // Check the edges existence
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[1], 2));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[2], 2));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[3], 3));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[4], 4));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[5], 5));
     }
 
     /** Tests the addEdges method of the Graph class. */
@@ -69,8 +82,39 @@ public class GraphTest {
     public void addEdgesTest() {
         // Initializations
         testGraph = new Graph();
+        String[] toAdd = { "Alfa", "Bravo", "charlie", "Delta", "echo", "Foxtrot" };
 
-        assertTrue(false);
+        // Add all of the nodes
+        for (String node : toAdd)
+            testGraph.addNode(node);
+        
+        // Create a toList and a weightList
+        String[] toList = { "Bravo", "charlie", "Delta", "echo", "Foxtrot" };
+        int[] weightList = { 1, 2, 3, 4, 5 };
+
+        // Try to use method with null inputs
+        assertFalse(testGraph.addEdges(null, null, null));
+        assertFalse(testGraph.addEdges(null, toList, weightList));
+        assertFalse(testGraph.addEdges(toAdd[0], null, weightList));
+        assertFalse(testGraph.addEdges(toAdd[0], toList, null));
+        
+        // Try to use the method with mismatched inputs
+        assertFalse(testGraph.addEdges("test", new String[] { "A", "B" }, new int[] { 1, 2, 3 }));
+        
+        // Try to use the method with an invalid weight in first, middle, & last
+        assertFalse(testGraph.addEdges("test", new String[] { "A", "B", "C" }, new int[] { -1, 2, 3 }));
+        assertFalse(testGraph.addEdges("test", new String[] { "A", "B", "C" }, new int[] { 1, -2, 3 }));
+        assertFalse(testGraph.addEdges("test", new String[] { "A", "B", "C" }, new int[] { 1, 2, -3 }));
+
+        // Add all of the edges
+        assertTrue(testGraph.addEdges(toAdd[0], toList, weightList));
+
+        // Check the existence of the edges
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[1], 1));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[2], 2));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[3], 3));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[4], 4));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[5], 5));
     }
 
     /** Tests the removeNode method of the Graph class. */
