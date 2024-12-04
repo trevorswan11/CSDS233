@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -70,8 +70,8 @@ public class Graph {
             return false;
 
         // Create an edge from from to to and to to from as graph is undirected
-        vertices.get(from).edges.put(to, new Edge(to, weight));
-        vertices.get(to).edges.put(from, new Edge(from, weight));
+        vertices.get(from).edges.put(to, new Edge(from, to, weight));
+        vertices.get(to).edges.put(from, new Edge(to, from, weight));
         return true;
     }
 
@@ -204,13 +204,34 @@ public class Graph {
      * @return A new Graph if entire input is correct, null otherwise
      */
     public static Graph createGraph(String[][] input) {
-        // Create the graph to be returned
+        // Create the graph to be returned and edge info
         Graph g = new Graph();
+        String from, to;
+        int weight;
 
         // Loop through all of the entries in the array
         for (String[] edge : input) {
             // Check if the edge is the correct length
-            if (edge.length != 3) return null;
+            if (edge.length != 3)
+                return null;
+
+            // Parse the inputs of the edge and check its validity
+            try {
+                from = edge[0];
+                to = edge[1];
+                weight = Integer.parseInt(edge[2]);
+                if (weight < 0)
+                    throw new NumberFormatException();
+            } catch (NumberFormatException e) {
+                return null;
+            }
+
+            // Create the two vertices, methods ignore duplicates by default
+            g.addNode(from);
+            g.addNode(to);
+
+            // Add the edge between the two vertices
+            g.addEdge(from, to, weight);
         }
 
         return g;
@@ -221,11 +242,53 @@ public class Graph {
      * 
      * @param from The name of first node
      * @param to   The name of second node
-     * @return The shortest distance, otherwise -1 if a either node does not exist
+     * @return The shortest distance, otherwise -1 if either node does not exist
      *         or there is no path between them
      */
     public int shortestDistance(String from, String to) {
-        return -1;
+        // Check if either vertex is not in the graph
+        if (!this.vertices.containsKey(from))
+            return -1;
+        if (!this.vertices.containsKey(to))
+            return -1;
+
+        // Reset the cost, done status, and parent status for each vertex
+        for (Vertex v : this.vertices.values()) {
+            v.cost = Integer.MAX_VALUE;
+            v.done = false;
+        }
+
+        // Use a priority queue to store the vertices by cost
+        PriorityQueue<Vertex> pq = new PriorityQueue<>(Comparator.comparingInt(v -> v.cost));
+
+        // Set the starting vertex's cost to 0 and add it to the priority queue
+        this.vertices.get(from).cost = 0;
+        pq.add(this.vertices.get(from));
+
+        // Loop until the queue is empty
+        while (!pq.isEmpty()) {
+            // Get the current vertex and skip if its been finished
+            Vertex current = pq.poll();
+            if (!current.done) {
+                current.done = true;
+                // Loop through all of the vertex's edges
+                for (Edge edge : current.edges.values()) {
+                    // Get currents neighbor on the edge and calculate its cost
+                    Vertex neighbor = this.vertices.get(edge.endName);
+                    int newCost = current.cost + edge.weight;
+
+                    // Only update the cost if the path is cheaper
+                    if (newCost < neighbor.cost) {
+                        neighbor.cost = newCost;
+                        pq.add(neighbor);
+                    }
+                }
+            }
+        }
+
+        // If the cost is not MAX_VALUE, it can be returned, otherwise its -1
+        int finalCost = this.vertices.get(to).cost;
+        return finalCost == Integer.MAX_VALUE ? -1 : finalCost;
     }
 
     /**
@@ -237,7 +300,74 @@ public class Graph {
      *         returns null.
      */
     public List<String[]> minimumSpanningTree() {
-        return null;
+        // Check if the graph is empty
+        if (this.vertices.isEmpty())
+            return null;
+
+        // Reset the encountered status for every vertex
+        for (Vertex v : this.vertices.values())
+            v.encountered = false;
+
+        // Create the mst object and also the priority queue for traversals
+        List<String[]> mst = new ArrayList<>();
+        PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));
+
+        // Get an arbitrary vertex to start with and mark it as seen
+        Vertex start = this.vertices.values().iterator().next();
+        start.encountered = true;
+
+        // Add all of the starting vertex's edges to the pq
+        for (Edge e : start.edges.values())
+            pq.add(e);
+
+        // Process the edges until the pq is empty
+        while (!pq.isEmpty()) {
+            // Get the smallest edge and its endNode
+            Edge smallestEdge = pq.poll();
+            Vertex source = this.vertices.get(smallestEdge.startName);
+            Vertex destination = this.vertices.get(smallestEdge.endName);
+            String weight = String.valueOf(smallestEdge.weight);
+
+            // Only process the edge if the vertex hasn't been encountered
+            if (!destination.encountered) {
+                // Mark as encountered, then add edge to the list
+                destination.encountered = true;
+                mst.add(new String[] { source.name, destination.name, weight });
+
+                // Add all edges of the destination to the pq
+                for (Edge e : destination.edges.values())
+                    if (!this.vertices.get(e.endName).encountered)
+                        pq.add(e);
+            }
+        }
+
+        // Check if all vertices have been encountered (is graph connected?)
+        for (Vertex v : this.vertices.values())
+            if (!v.encountered)
+                return null;
+        return mst;
+    }
+
+    /**
+     * Determines the minimum spanning tree for the graph and returns it as a
+     * formatted String for testing
+     * 
+     * @return The minimum spanning tree for the graph, where each line is in the
+     *         form {source, destination, weight}
+     */
+    public String mstToString() {
+        // Create a string builder and determine the graphs MST
+        StringBuilder sb = new StringBuilder();
+        List<String[]> myMST = this.minimumSpanningTree();
+
+        // Create an iterator for the list for easy linear access, and loop
+        Iterator<String[]> itr = myMST.iterator();
+        while (itr.hasNext()) {
+            // Add the next item and only newline if theres a succeeding one
+            sb.append(Arrays.toString(itr.next()));
+            sb.append(itr.hasNext() ? "\n" : "");
+        }
+        return sb.toString();
     }
 
     /**
@@ -255,8 +385,6 @@ public class Graph {
         private boolean encountered;
         /** Indicates whether the vertex has been included in the MST */
         private boolean done;
-        /** The parent vertex of the current vertex */
-        private Vertex parent;
         /** The cost of the vertex */
         private int cost;
 
@@ -270,7 +398,6 @@ public class Graph {
             this.edges = new HashMap<>();
             this.encountered = false;
             this.done = false;
-            this.parent = null;
             this.cost = Integer.MAX_VALUE;
         }
 
@@ -292,6 +419,8 @@ public class Graph {
      * @version CSDS233 - Fall 2024
      */
     private class Edge {
+        /** The vertex at the start of the edge */
+        private String startName;
         /** The vertex at the end of the edge */
         private String endName;
         /** The cost of the edge */
@@ -303,24 +432,10 @@ public class Graph {
          * @param endNode The location of the node in the vertex array
          * @param weight  The cost of the edge to add
          */
-        public Edge(String endName, int weight) {
+        public Edge(String startName, String endName, int weight) {
+            this.startName = startName;
             this.endName = endName;
             this.weight = weight;
         }
-    }
-
-    public static void main(String[] args) {
-        Graph g = new Graph();
-        g.addNode("poop");
-        g.addNode("poop1");
-        g.addNode("poop2");
-        g.addNode("poop3");
-        g.addNode("poop4");
-
-        String[] toS = { "poop1", "poop2", "poop3", "poop4" };
-        int[] weights = { 1, 2, 3, 4 };
-        g.addEdges("poop", toS, weights);
-        g.printGraph();
-        System.out.println("ok");
     }
 }
