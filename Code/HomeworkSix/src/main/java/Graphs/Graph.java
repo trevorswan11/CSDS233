@@ -20,6 +20,15 @@ public class Graph {
     private HashMap<String, Vertex> vertices;
 
     /**
+     * Retrieves the vertices of the graph.
+     * 
+     * @return The HashMap of vertices
+     */
+    public HashMap<String, Vertex> getVertices() {
+        return this.vertices;
+    }
+
+    /**
      * Creates a new empty Graph with initialized data structures.
      */
     public Graph() {
@@ -33,6 +42,10 @@ public class Graph {
      * @return false if the node already exists in the graph
      */
     public boolean addNode(String name) {
+        // Check for null input
+        if (name == null)
+            return false;
+
         // Check to see if the vertex already exists in the graph
         if (vertices.containsKey(name))
             return false;
@@ -53,6 +66,10 @@ public class Graph {
      *         invalid
      */
     public boolean addEdge(String from, String to, int weight) {
+        // Check for null inputs and invalid weight
+        if (from == null || to == null || weight < 0)
+            return false;
+        
         // Check if either vertex is not in the graph
         if (!this.vertices.containsKey(from))
             return false;
@@ -61,8 +78,6 @@ public class Graph {
 
         // Check for a self-loop or invalid weight
         if (from.equals(to))
-            return false;
-        if (weight < 0)
             return false;
 
         // Check if an edge exists between the vertices
@@ -86,6 +101,10 @@ public class Graph {
      *         weight is invalid
      */
     public boolean addEdges(String from, String[] toList, int[] weightList) {
+        // Check for null inputs
+        if (from == null || toList == null || weightList == null)
+            return false;
+
         // Check for length mismatches between toList and weightList
         if (toList.length != weightList.length)
             return false;
@@ -109,6 +128,10 @@ public class Graph {
      * @return false if the node does not exist in the graph
      */
     public boolean removeNode(String node) {
+        // Check for null input
+        if (node == null)
+            return false;
+
         // Check to see if the node exists
         if (!vertices.containsKey(node))
             return false;
@@ -128,9 +151,13 @@ public class Graph {
      * 
      * @param from The first vertex of the edge
      * @param to   The second vertex of the edge
-     * @return false if the node does not exist in the graph
+     * @return false if either node does not exist in the graph
      */
     public boolean removeEdge(String from, String to) {
+        // Check for null inputs
+        if (from == null || to == null)
+            return false;
+
         // Check if either vertex is not in the graph
         if (!this.vertices.containsKey(from))
             return false;
@@ -204,6 +231,10 @@ public class Graph {
      * @return A new Graph if entire input is correct, null otherwise
      */
     public static Graph createGraph(String[][] input) {
+        // Check for null input
+        if (input == null)
+            return null;
+
         // Create the graph to be returned and edge info
         Graph g = new Graph();
         String from, to;
@@ -246,6 +277,10 @@ public class Graph {
      *         or there is no path between them
      */
     public int shortestDistance(String from, String to) {
+        // Check for null inputs
+        if (from == null || to == null)
+            return -1;
+
         // Check if either vertex is not in the graph
         if (!this.vertices.containsKey(from))
             return -1;

@@ -1,40 +1,36 @@
 -------------------------------------------------------------------------------
 Test set: Graphs.GraphTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 9, Errors: 0, Skipped: 0, Time elapsed: 0.037 s <<< FAILURE! - in Graphs.GraphTest
-shortestDistanceTest(Graphs.GraphTest)  Time elapsed: 0.005 s  <<< FAILURE!
+Tests run: 9, Failures: 8, Errors: 0, Skipped: 0, Time elapsed: 0.013 s <<< FAILURE! - in Graphs.GraphTest
+shortestDistanceTest(Graphs.GraphTest)  Time elapsed: 0.002 s  <<< FAILURE!
 java.lang.AssertionError
-	at Graphs.GraphTest.shortestDistanceTest(GraphTest.java:60)
+	at Graphs.GraphTest.shortestDistanceTest(GraphTest.java:78)
 
 minimumSpanningTreeTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
-	at Graphs.GraphTest.minimumSpanningTreeTest(GraphTest.java:66)
+	at Graphs.GraphTest.minimumSpanningTreeTest(GraphTest.java:84)
 
 addEdgesTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
-	at Graphs.GraphTest.addEdgesTest(GraphTest.java:30)
+	at Graphs.GraphTest.addEdgesTest(GraphTest.java:48)
 
-addNodeTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
+printGraphTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
-	at Graphs.GraphTest.addNodeTest(GraphTest.java:18)
+	at Graphs.GraphTest.printGraphTest(GraphTest.java:66)
 
-printGraphTest(Graphs.GraphTest)  Time elapsed: 0.001 s  <<< FAILURE!
+addEdgeTest(Graphs.GraphTest)  Time elapsed: 0.001 s  <<< FAILURE!
 java.lang.AssertionError
-	at Graphs.GraphTest.printGraphTest(GraphTest.java:48)
+	at Graphs.GraphTest.addEdgeTest(GraphTest.java:42)
 
-addEdgeTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
+removeEdge(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
-	at Graphs.GraphTest.addEdgeTest(GraphTest.java:24)
-
-removeEdge(Graphs.GraphTest)  Time elapsed: 0.002 s  <<< FAILURE!
-java.lang.AssertionError
-	at Graphs.GraphTest.removeEdge(GraphTest.java:42)
+	at Graphs.GraphTest.removeEdge(GraphTest.java:60)
 
 removeNode(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
-	at Graphs.GraphTest.removeNode(GraphTest.java:36)
+	at Graphs.GraphTest.removeNode(GraphTest.java:54)
 
 createGraphTest(Graphs.GraphTest)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
-	at Graphs.GraphTest.createGraphTest(GraphTest.java:54)
+	at Graphs.GraphTest.createGraphTest(GraphTest.java:72)
 
