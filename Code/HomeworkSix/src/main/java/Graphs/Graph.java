@@ -56,6 +56,27 @@ public class Graph {
     }
 
     /**
+     * Checks if a node has a general edge to another node.
+     * 
+     * @param from The node at the start of the edge
+     * @param to   The node at the end of the edge
+     * @return True if the node exists in the graph and points to the correct name
+     * @apiNote Please use this only when wanting to check the existence of an edge,
+     *          like after removing it. This method does not care about the weight
+     *          of the edge!
+     */
+    public boolean hasEdge(String from, String to) {
+        // Check the validity of the vertex names and weight
+        if (!this.vertices.containsKey(from) || !this.vertices.containsKey(to))
+            return false;
+
+        // Use the Vertex has Edge class to check the vertices
+        Vertex v1 = this.vertices.get(from);
+        Vertex v2 = this.vertices.get(to);
+        return v1.hasEdge(to) && v2.hasEdge(from);
+    }
+
+    /**
      * Adds a node to the graph.
      * 
      * @param name The name of the node to insert
@@ -200,7 +221,7 @@ public class Graph {
      * 
      * @apiNote Expected format per line: {nodename1} {weight} {neighbor1} {weight}
      *          {neighbor2} ...
-     * @see toString This method returns the printed String representation
+     * @see {@code toString} This method returns the printed String representation
      */
     public void printGraph() {
         System.out.println(toString());
@@ -213,7 +234,7 @@ public class Graph {
 
         // Create a sorted list of vertices using collections
         ArrayList<String> sortedVertices = new ArrayList<>(vertices.keySet());
-        Collections.sort(sortedVertices);
+        Collections.sort(sortedVertices, String.CASE_INSENSITIVE_ORDER);
         int numVertices = sortedVertices.size();
 
         // Iterate through the vertices which are now in alpha order
@@ -227,7 +248,7 @@ public class Graph {
 
             // Create a sorted list of neighbors
             ArrayList<String> sortedNeighbors = new ArrayList<>(v.edges.keySet());
-            Collections.sort(sortedNeighbors);
+            Collections.sort(sortedNeighbors, String.CASE_INSENSITIVE_ORDER);
 
             // Add each neighbor and its weight to the builder
             for (String neighbor : sortedNeighbors) {
@@ -306,6 +327,10 @@ public class Graph {
             return -1;
         if (!this.vertices.containsKey(to))
             return -1;
+
+        // Check if from is the same node as to
+        if (from.equals(to))
+            return 0;
 
         // Reset the cost, done status, and parent status for each vertex
         for (Vertex v : this.vertices.values()) {
@@ -471,6 +496,22 @@ public class Graph {
             // Get the edge and check its end node and weight
             Edge e = this.edges.get(to);
             return e.endName.equals(to) && e.weight == weight;
+        }
+
+        /**
+         * Checks if a vertex has an edge to a specific node with a given weight.
+         * 
+         * @param to The end node of the edge to check
+         * @return True if the edge exists with the weight given
+         */
+        private boolean hasEdge(String to) {
+            // Check if the vertex contains the edge or input is invalid
+            if (to == null || !this.edges.containsKey(to))
+                return false;
+
+            // Get the edge and check its end node and weight
+            Edge e = this.edges.get(to);
+            return e.endName.equals(to);
         }
 
         /**

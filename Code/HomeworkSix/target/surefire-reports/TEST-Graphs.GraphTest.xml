@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Graphs.GraphTest" time="0.013" tests="9" errors="0" skipped="0" failures="8">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Graphs.GraphTest" time="0.015" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/23.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/Trevor/Library/Mobile Documents/com~apple~CloudDocs/Documents/Trevor/CWRU/Fall 2024/CSDS233/Code/HomeworkSix/target/surefire/surefirebooter198177714131979284.jar /Users/Trevor/Library/Mobile Documents/com~apple~CloudDocs/Documents/Trevor/CWRU/Fall 2024/CSDS233/Code/HomeworkSix/target/surefire 2024-12-03T23-34-14_375-jvmRun1 surefire15092028889206143067tmp surefire_01880626051519719801tmp"/>
+    <property name="sun.java.command" value="/Users/Trevor/Library/Mobile Documents/com~apple~CloudDocs/Documents/Trevor/CWRU/Fall 2024/CSDS233/Code/HomeworkSix/target/surefire/surefirebooter11746858805863166127.jar /Users/Trevor/Library/Mobile Documents/com~apple~CloudDocs/Documents/Trevor/CWRU/Fall 2024/CSDS233/Code/HomeworkSix/target/surefire 2024-12-04T23-25-19_825-jvmRun1 surefire16543411856778422665tmp surefire_09947223508492511617tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="GraphTest"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/Trevor/Library/Mobile Documents/com~apple~CloudDocs/Documents/Trevor/CWRU/Fall 2024/CSDS233/Code/HomeworkSix/target/surefire/surefirebooter198177714131979284.jar"/>
+    <property name="surefire.real.class.path" value="/Users/Trevor/Library/Mobile Documents/com~apple~CloudDocs/Documents/Trevor/CWRU/Fall 2024/CSDS233/Code/HomeworkSix/target/surefire/surefirebooter11746858805863166127.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23.0.1"/>
@@ -60,45 +60,14 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="shortestDistanceTest" classname="Graphs.GraphTest" time="0.002">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at Graphs.GraphTest.shortestDistanceTest(GraphTest.java:78)
-</failure>
-  </testcase>
-  <testcase name="minimumSpanningTreeTest" classname="Graphs.GraphTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at Graphs.GraphTest.minimumSpanningTreeTest(GraphTest.java:84)
-</failure>
-  </testcase>
-  <testcase name="addEdgesTest" classname="Graphs.GraphTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at Graphs.GraphTest.addEdgesTest(GraphTest.java:48)
-</failure>
-  </testcase>
+  <testcase name="shortestDistanceTest" classname="Graphs.GraphTest" time="0.003"/>
+  <testcase name="minimumSpanningTreeTest" classname="Graphs.GraphTest" time="0"/>
+  <testcase name="removeNodeTest" classname="Graphs.GraphTest" time="0"/>
+  <testcase name="removeEdgeTest" classname="Graphs.GraphTest" time="0"/>
+  <testcase name="addEdgesTest" classname="Graphs.GraphTest" time="0"/>
   <testcase name="addNodeTest" classname="Graphs.GraphTest" time="0"/>
-  <testcase name="printGraphTest" classname="Graphs.GraphTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at Graphs.GraphTest.printGraphTest(GraphTest.java:66)
-</failure>
-  </testcase>
-  <testcase name="addEdgeTest" classname="Graphs.GraphTest" time="0.001">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at Graphs.GraphTest.addEdgeTest(GraphTest.java:42)
-</failure>
-  </testcase>
-  <testcase name="removeEdge" classname="Graphs.GraphTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at Graphs.GraphTest.removeEdge(GraphTest.java:60)
-</failure>
-  </testcase>
-  <testcase name="removeNode" classname="Graphs.GraphTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at Graphs.GraphTest.removeNode(GraphTest.java:54)
-</failure>
-  </testcase>
-  <testcase name="createGraphTest" classname="Graphs.GraphTest" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at Graphs.GraphTest.createGraphTest(GraphTest.java:72)
-</failure>
-  </testcase>
+  <testcase name="printGraphTest" classname="Graphs.GraphTest" time="0"/>
+  <testcase name="addEdgeTest" classname="Graphs.GraphTest" time="0"/>
+  <testcase name="createGraphTest" classname="Graphs.GraphTest" time="0.001"/>
+  <testcase name="assignmentExampleTest" classname="Graphs.GraphTest" time="0"/>
 </testsuite>
