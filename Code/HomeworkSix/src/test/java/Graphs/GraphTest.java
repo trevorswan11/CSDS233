@@ -24,7 +24,7 @@ public class GraphTest {
 
         // Test a single node
         assertTrue(testGraph.addNode(toAdd[0]));
-        testGraph.getVertices().containsKey(toAdd[0]);
+        assertTrue(testGraph.getVertices().containsKey(toAdd[0]));
 
         // Test a duplicate node
         assertFalse(testGraph.addNode(toAdd[0]));
@@ -119,23 +119,59 @@ public class GraphTest {
 
     /** Tests the removeNode method of the Graph class. */
     @Test
-    public void removeNode() {
+    public void removeNodeTest() {
         // Initializations
         testGraph = new Graph();
+        String[] toAdd = { "Alfa", "Bravo", "charlie", "Delta", "echo", "Foxtrot" };
 
-        assertTrue(false);
+        // Add all of the nodes
+        for (String node : toAdd)
+            testGraph.addNode(node);
+
+        // Add a couple edges
+        testGraph.addEdge(toAdd[0], toAdd[4], 1);
+        testGraph.addEdge(toAdd[2], toAdd[3], 1);
+        testGraph.addEdge(toAdd[2], toAdd[4], 1);
+        testGraph.addEdge(toAdd[5], toAdd[4], 1);
+        
+        // Remove a node that doesn't exist
+        assertFalse(testGraph.removeNode("null"));
+
+        // Remove a node with no edges
+        assertTrue(testGraph.removeNode(toAdd[1]));
+        assertFalse(testGraph.getVertices().containsKey(toAdd[1]));
+        assertTrue(testGraph.hasEdge(toAdd[0], toAdd[4], 1));
+        assertTrue(testGraph.hasEdge(toAdd[2], toAdd[3], 1));
+        assertTrue(testGraph.hasEdge(toAdd[2], toAdd[4], 1));
+
+        // Remove a node with one edge
+        assertTrue(testGraph.removeNode(toAdd[0]));
+        assertFalse(testGraph.getVertices().containsKey(toAdd[0]));
+        assertFalse(testGraph.hasEdge(toAdd[0], toAdd[4], 1));
+        assertTrue(testGraph.hasEdge(toAdd[5], toAdd[4], 1));
+        assertTrue(testGraph.hasEdge(toAdd[2], toAdd[3], 1));
+        assertTrue(testGraph.hasEdge(toAdd[2], toAdd[4], 1));
+        testGraph.printGraph();
+
+        // Remove a node with two edges
+        testGraph.removeNode(toAdd[2]);
+        assertFalse(testGraph.getVertices().containsKey(toAdd[2]));
+        assertFalse(testGraph.hasEdge(toAdd[2], toAdd[3], 1));
+        assertFalse(testGraph.hasEdge(toAdd[2], toAdd[4], 1));
+        assertTrue(testGraph.hasEdge(toAdd[5], toAdd[4], 1));
+        testGraph.printGraph();
     }
 
     /** Tests the removeEdge method of the Graph class. */
     @Test
-    public void removeEdge() {
+    public void removeEdgeTest() {
         // Initializations
         testGraph = new Graph();
 
         assertTrue(false);
     }
 
-    /** Tests the printGraph method of the Graph class. */
+    /** Tests the printGraph method of the Graph class using toString. */
     @Test
     public void printGraphTest() {
         // Initializations
