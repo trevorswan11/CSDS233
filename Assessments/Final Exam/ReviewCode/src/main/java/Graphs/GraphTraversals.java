@@ -62,20 +62,80 @@ public class GraphTraversals {
         return sb.toString().trim();
     }
 
-    public int shortestPaths(String from) {
+    public List<String[]> shortestPaths(String from) {
         if (from == null)
-            return -1;
+            return null;
         if (!g.vertices.containsKey(from))
-            return -1;
+            return null;
         for (Vertex v : g.vertices.values()) {
             v.cost = Integer.MAX_VALUE;
             v.done = false;
         }
-        return 0;
+        Vertex start = g.vertices.get(from);
+        start.cost = 0;
+        PriorityQueue<Vertex> pq = new PriorityQueue<>(Comparator.comparingInt(v -> v.cost));
+        pq.add(start);
+        while (!pq.isEmpty()) {
+            Vertex current = pq.poll();
+            if (!current.done) {
+                current.done = true;
+                for (Edge e : current.edges.values()) {
+                    Vertex neighbor = g.vertices.get(e.endName);
+                    int newCost = current.cost + e.weight;
+                    if (newCost < neighbor.cost) {
+                        neighbor.cost = newCost;
+                        pq.add(neighbor);
+                    }
+                }
+            }
+        }
+        ArrayList<String[]> al = new ArrayList<>();
+        for (Vertex v : g.vertices.values()) {
+            if (!v.name.equals(from)) {
+                int weight = (v.cost < 0 || v.cost == Integer.MAX_VALUE) ? -1 : v.cost;
+                String to = v.name;
+                al.add(new String[] { from, Integer.toString(weight), to });
+            }
+        }
+        return al;
     }
 
     public List<String[]> MST() {
-        return null;
+        if (g.vertices.isEmpty())
+            return null;
+        for (Vertex v : g.vertices.values())
+            v.encountered = false;
+        List<String[]> mst = new ArrayList<>();
+        PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));
+        Vertex start = g.vertices.values().iterator().next();
+        start.encountered = true;
+        for (Edge e : start.edges.values())
+            pq.add(e);
+        while (!pq.isEmpty()) {
+            Edge smallest = pq.poll();
+            Vertex source = g.vertices.get(smallest.startName);
+            Vertex destination = g.vertices.get(smallest.endName);
+            String weight = Integer.toString(smallest.weight);
+            if (!destination.encountered) {
+                destination.encountered = true;
+                mst.add(new String[] { source.name, destination.name, weight });
+                for (Edge e : destination.edges.values())
+                    if (!g.vertices.get(e.endName).encountered)
+                        pq.add(e);
+            }
+        }
+        for (Vertex v : g.vertices.values())
+            if (!v.encountered) return null;
+        return mst;
+    }
+
+    private static void printList(List<String[]> input) {
+        for (String[] arr : input) {
+            StringBuilder sb = new StringBuilder();
+            for (String entry : arr)
+                sb.append(entry).append(" ");
+            System.out.println(sb.toString().trim());
+        }
     }
 
     public static void main(String[] args) {
@@ -89,8 +149,16 @@ public class GraphTraversals {
                         { "D", "F", "10" }
                 }));
         graph.g.printGraph();
+        System.out.println();
         System.out.println(graph.BFS("A"));
+        System.out.println();
         System.out.println(graph.DFS("A"));
-        
+        System.out.println();
+        List<String[]> dijkstra = graph.shortestPaths("A");
+        printList(dijkstra);
+        System.out.println();
+        List<String[]> prim = graph.MST();
+        printList(prim); 
+        System.out.println("done");
     }
 }
