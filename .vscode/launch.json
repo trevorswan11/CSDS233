@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GraphTraversals",
+            "request": "launch",
+            "mainClass": "Graphs.GraphTraversals",
+            "projectName": "Heaps-ReviewCode"
+        },
+        {
+            "type": "java",
+            "name": "MySorter",
+            "request": "launch",
+            "mainClass": "Sorting.MySorter",
+            "projectName": "Heaps-ReviewCode"
+        },
+        {
+            "type": "java",
+            "name": "HW4_tcs94_Test",
+            "request": "launch",
+            "mainClass": "Hashing.HW4_tcs94_Test",
+            "projectName": "Heaps-ReviewCode"
+        },
+        {
+            "type": "java",
+            "name": "HeapTest",
+            "request": "launch",
+            "mainClass": "Heaps.HeapTest",
+            "projectName": "Heaps-ReviewCode"
+        },
+        {
+            "type": "java",
+            "name": "MaxAtTop",
+            "request": "launch",
+            "mainClass": "Heaps.MaxAtTop",
+            "projectName": "Heaps-ReviewCode"
+        },
+        {
+            "type": "java",
             "name": "Graph",
             "request": "launch",
             "mainClass": "Graphs.Graph",

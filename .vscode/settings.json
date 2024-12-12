@@ -3,6 +3,7 @@
         "bools",
         "expecteds",
         "Hasher",
+        "heapify",
         "inorder",
         "Javadoc",
         "leetcode",

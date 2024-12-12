@@ -99,7 +99,7 @@ public class HW4_tcs94 {
 
         // Try to find an open location in the hash table
         int i = 0;
-        int position = startingIndex + i * stepSize;
+        int position = (startingIndex + i * stepSize) % this.ht.length;
         while (this.ht[position] != null && !this.ht[position].removed) {
             i++;
             position = (startingIndex + i * stepSize) % this.ht.length;
