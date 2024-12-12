@@ -1,6 +1,6 @@
-package BinaryTree;
+package Graphs.Trees;
 
-import Queue.*;
+import Queues.CircularQueue;
 
 public class BST<T> {
     private Node<T> root;

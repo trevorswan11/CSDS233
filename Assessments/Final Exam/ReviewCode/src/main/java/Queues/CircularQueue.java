@@ -1,4 +1,4 @@
-package Queue;
+package Queues;
 
 public class CircularQueue<T> {
     private T[] arr;
